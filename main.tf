@@ -15,9 +15,8 @@ terraform {
 resource "random_string" "workspace_id" {
   length           = 5
   min_numeric      = 1
-  special          = true
+  special          = false
   upper            = false
-  override_special = "_-"  # Allow only dashes and underscores as special characters
 }
 resource "linode_nodebalancer" "talos" {
     label = "${var.name}_${random_string.workspace_id.id}"
